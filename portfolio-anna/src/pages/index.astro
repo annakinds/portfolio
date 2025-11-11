@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+// import grid from "../assets/grid.svg";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -8,10 +9,22 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
 	<div>
 		<h1>Hi there, I am Anna Kinds</h1>
-		<nav>
-			<a href="/about">About</a> |
-			<a href="/projects">Projects</a> |
-			<a href="/contact">Contact</a>
+		<nav class="nav">
+			<a class="nav__about" href="/about">About</a>
+			<div class="nav__about--rect">
+				<p>
+					Hi, I’m Anna. I love combining creativity and technology.
+					That’s how I found my passion for photography and film.
+					Through my studies in Digital Design and Development, I
+					developed skills in coding, design, and visual storytelling.
+				</p>
+			</div>
+			<a class="nav__projects" href="/projects">Projects</a>
+			<div class="nav__projects--rect">
+				<img src={grid} alt="grid pattern" />
+			</div>
+			<a class="nav__contact" href="/contact">Contact</a>
+			<div class="nav__contact--rect"></div>
 		</nav>
 	</div>
 </Layout>
@@ -19,9 +32,132 @@ import Layout from "../layouts/Layout.astro";
 <style>
 	body {
 		font-family: Arial, Helvetica, sans-serif;
+		color: #fefffa;
 	}
 	h1 {
 		font-family: baskerville, serif;
 		text-transform: uppercase;
+		color: #4870aa;
+	}
+	.nav {
+		display: grid;
+		grid-auto-flow: row;
+		justify-items: center;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: auto auto auto auto;
+	}
+	.nav a {
+		text-decoration: none;
+		color: inherit;
+		font-family: baskerville, serif;
+		font-weight: 400;
+		font-size: 3rem;
+		padding: 1rem 2.5rem;
+		width: fit-content;
+		height: fit-content;
+		border-radius: 50px 50px 0px 0px;
+		text-transform: uppercase;
+		display: flex;
+		align-self: end;
+	}
+	.nav__about {
+		background-color: #644a3d;
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.nav__about--rect {
+		background-color: #644a3d;
+		grid-column: 1 / span 3;
+		grid-row: 2;
+	}
+
+	.nav__projects {
+		background-color: #839bd1;
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	.nav__projects--rect {
+		background-color: #839bd1;
+		grid-column: 1 / span 3;
+		grid-row: 3;
+	}
+	.nav__contact {
+		background-color: #2f2f2f;
+		grid-column: 1;
+		grid-row: 3;
+	}
+	.nav__contact--rect {
+		background-color: #2f2f2f;
+		grid-column: 1 / span 3;
+		grid-row: 4;
+	}
+
+	.nav__about--rect,
+	.nav__projects--rect,
+	.nav__contact--rect {
+		transition: height 0.3s ease;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: start;
+		color: white;
+		height: 10rem;
+		width: 100%;
+		font-size: 1.5rem;
+	}
+
+	.nav__about--rect p,
+	.nav__projects--rect p,
+	.nav__contact--rect p {
+		padding: 2rem;
+		width: 50%;
+	}
+
+	/* ABOUT */
+	.nav__about:hover + .nav__about--rect,
+	.nav__about--rect:hover {
+		height: 25rem;
+	}
+
+	.nav__about:hover + .nav__about--rect p,
+	.nav__about--rect:hover p {
+		opacity: 1;
+	}
+
+	/* PROJECTS */
+	.nav__projects:hover + .nav__projects--rect,
+	.nav__projects--rect:hover {
+		height: 25rem;
+	}
+
+	.nav__projects:hover + .nav__projects--rect p,
+	.nav__projects--rect:hover p {
+		opacity: 1;
+	}
+
+	/* CONTACT */
+	.nav__contact:hover + .nav__contact--rect,
+	.nav__contact--rect:hover {
+		height: 25rem;
+	}
+
+	.nav__contact:hover + .nav__contact--rect p,
+	.nav__contact--rect:hover p {
+		opacity: 1;
+	}
+
+	/* tekst in de rect standaard onzichtbaar */
+	.nav__about--rect p,
+	.nav__projects--rect p,
+	.nav__contact--rect p {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.nav__projects--rect img {
+		width: 100%;
+		height: 100%;
 	}
 </style>
