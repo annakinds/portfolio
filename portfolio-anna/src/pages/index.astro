@@ -1,14 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import grid from "../assets/grid.svg";
-
+import { Image } from "astro:assets";
+import grid from "../assets/grid.svg";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
 	<div>
-		<h1>Hi there, I am Anna Kinds</h1>
+		<div class="intro">
+			<h1>
+				Hi <span class="elegant">t</span>here, <span class="elegant"
+					>I</span
+				> am <span
+					class="highlight"><span class="elegant">A</span>nna <span class="elegant"
+						>K</span
+					>inds</span
+				>
+			</h1>
+			<img src="../assets/profilePhoto.png" alt="" />
+			<div class="intro__subtitle">
+				<h2>Portfolio</h2>
+				<h2>2025</h2>
+			</div>
+		</div>
 		<nav class="nav">
 			<a class="nav__about" href="/about">About</a>
 			<div class="nav__about--rect">
@@ -21,7 +36,22 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 			<a class="nav__projects" href="/projects">Projects</a>
 			<div class="nav__projects--rect">
-				<img src={grid} alt="grid pattern" />
+				<div>
+					<p>
+						My work is a mix of all these words, but I do love
+						finding new words to add.
+					</p>
+					<ul>
+						<li>Digital Design</li>
+						<li>Storytelling</li>
+						<li>Interactive Design</li>
+						<li>3D</li>
+						<li>Motion design</li>
+						<li>Photography</li>
+						<li><a href="/projects">See my work</a></li>
+					</ul>
+				</div>
+				<Image src={grid} alt="A rocketship in space." class="grid" />
 			</div>
 			<a class="nav__contact" href="/contact">Contact</a>
 			<div class="nav__contact--rect"></div>
@@ -30,15 +60,56 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
+	:root {
+		--lightlightblue: #dae0ee;
+		--lightblue: #b8c3dc;
+		--blue: #8897ba;
+		--accent: #daea81;
+		--black: #333333;
+	}
 	body {
 		font-family: Arial, Helvetica, sans-serif;
-		color: #fefffa;
+		color: var(--black);
+	}
+
+	.elegant {
+		font-family: "Parisienne";
+		font-weight: 400;
+	}
+
+	.highlight {
+		background-color: var(--accent);
+		border-radius: 25px;
+	}
+
+	.intro {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-rows: max-content auto;
+		padding: 0rem 5rem;
 	}
 	h1 {
-		font-family: baskerville, serif;
 		text-transform: uppercase;
-		color: #4870aa;
+		font-size: 5rem;
+		width: 40rem;
+		grid-column: 2;
+		grid-row: 2;
 	}
+
+	.intro__subtitle {
+		font-size: 1rem;
+		text-transform: uppercase;
+		color: #8897ba;
+		display: flex;
+		justify-content: space-between;
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	h2 {
+		font-weight: 400;
+	}
+
 	.nav {
 		display: grid;
 		grid-auto-flow: row;
@@ -46,50 +117,80 @@ import Layout from "../layouts/Layout.astro";
 		grid-template-columns: auto auto auto;
 		grid-template-rows: auto auto auto auto;
 	}
-	.nav a {
+	.nav > a {
 		text-decoration: none;
 		color: inherit;
-		font-family: baskerville, serif;
 		font-weight: 400;
-		font-size: 3rem;
+		font-size: 2rem;
 		padding: 1rem 2.5rem;
 		width: fit-content;
 		height: fit-content;
-		border-radius: 50px 50px 0px 0px;
+		border-radius: 25px 25px 0px 0px;
 		text-transform: uppercase;
 		display: flex;
 		align-self: end;
 	}
 	.nav__about {
-		background-color: #644a3d;
+		background-color: var(--lightlightblue);
 		grid-column: 3;
 		grid-row: 1;
 	}
 
 	.nav__about--rect {
-		background-color: #644a3d;
+		background-color: var(--lightlightblue);
 		grid-column: 1 / span 3;
 		grid-row: 2;
 	}
 
 	.nav__projects {
-		background-color: #839bd1;
+		background-color: var(--lightblue);
 		grid-column: 2;
 		grid-row: 2;
 	}
 
 	.nav__projects--rect {
-		background-color: #839bd1;
+		background-color: var(--lightblue);
 		grid-column: 1 / span 3;
 		grid-row: 3;
+
+		position: relative;
+		overflow: hidden;
+		height: 10rem;
+
+		transition: height 0.3s ease;
+		color: white;
+		font-size: 1.5rem;
 	}
+
+	.nav__projects--rect img.grid {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: 1;
+	}
+
+	.nav__projects--rect div {
+		position: relative;
+		z-index: 2;
+		padding: 2rem;
+		width: 50%;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		display: flex;
+		flex-direction: row;
+	}
+
 	.nav__contact {
-		background-color: #2f2f2f;
+		background-color: var(--blue);
 		grid-column: 1;
 		grid-row: 3;
+		z-index: 3;
 	}
 	.nav__contact--rect {
-		background-color: #2f2f2f;
+		background-color: var(--blue);
 		grid-column: 1 / span 3;
 		grid-row: 4;
 	}
@@ -109,7 +210,7 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	.nav__about--rect p,
-	.nav__projects--rect p,
+	.nav__projects--rect div,
 	.nav__contact--rect p {
 		padding: 2rem;
 		width: 50%;
@@ -132,8 +233,8 @@ import Layout from "../layouts/Layout.astro";
 		height: 25rem;
 	}
 
-	.nav__projects:hover + .nav__projects--rect p,
-	.nav__projects--rect:hover p {
+	.nav__projects:hover + .nav__projects--rect div,
+	.nav__projects--rect:hover div {
 		opacity: 1;
 	}
 
@@ -150,14 +251,9 @@ import Layout from "../layouts/Layout.astro";
 
 	/* tekst in de rect standaard onzichtbaar */
 	.nav__about--rect p,
-	.nav__projects--rect p,
+	.nav__projects--rect div,
 	.nav__contact--rect p {
 		opacity: 0;
 		transition: opacity 0.3s ease;
-	}
-
-	.nav__projects--rect img {
-		width: 100%;
-		height: 100%;
 	}
 </style>
