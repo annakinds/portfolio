@@ -1,15 +1,69 @@
 <div>
     <nav>
-        <ul>
+        <ul class="nav-list">
             <li>
-                <a href="../pages/about"></a>
+                <a class="home" href="/">Home</a>
             </li>
             <li>
-                <a href="../pages/projects"></a>
+                <a class="about" href="/about/">About</a>
             </li>
             <li>
-                <a href="../pages/contact"></a>
+                <a class="projects" href="projects">Projects</a>
+            </li>
+            <li>
+                <a class="contact" href="/contact/">Contact</a>
             </li>
         </ul>
     </nav>
 </div>
+
+<style>
+    :root {
+        --lightlightblue: #dae0ee;
+        --lightblue: #b8c3dc;
+        --blue: #8897ba;
+        --accent: #daea81;
+        --black: #333333;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: end;
+        align-content: end;
+        margin-top: 2rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--black);
+        text-transform: uppercase;
+        padding: .5rem 2rem;
+        border-radius: 25px 25px 0px 0px;
+    }
+
+    a:hover {
+        padding: 1.5rem 2rem .5rem 2rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .home {
+        background-color: var(--black);
+        color: #dae0ee;
+
+    }
+
+    .about {
+        background-color: var(--lightlightblue);
+    }
+
+    .projects {
+        background-color: var(--lightblue);
+    }
+
+    .contact {
+        background-color: var(--blue);
+    }
+</style>

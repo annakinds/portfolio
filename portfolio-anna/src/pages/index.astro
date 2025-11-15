@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import grid from "../assets/grid.svg";
+import profile from "../assets/profilPhoto.png";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -12,13 +12,13 @@ import grid from "../assets/grid.svg";
 			<h1>
 				Hi <span class="elegant">t</span>here, <span class="elegant"
 					>I</span
-				> am <span
-					class="highlight"><span class="elegant">A</span>nna <span class="elegant"
+				> am <span class="highlight"
+					><span class="elegant">A</span>nna <span class="elegant"
 						>K</span
 					>inds</span
 				>
 			</h1>
-			<img src="../assets/profilePhoto.png" alt="" />
+			<Image src={profile} alt="" class="profilePhoto" />
 			<div class="intro__subtitle">
 				<h2>Portfolio</h2>
 				<h2>2025</h2>
@@ -51,7 +51,6 @@ import grid from "../assets/grid.svg";
 						<li><a href="/projects">See my work</a></li>
 					</ul>
 				</div>
-				<Image src={grid} alt="A rocketship in space." class="grid" />
 			</div>
 			<a class="nav__contact" href="/contact">Contact</a>
 			<div class="nav__contact--rect"></div>
@@ -66,10 +65,12 @@ import grid from "../assets/grid.svg";
 		--blue: #8897ba;
 		--accent: #daea81;
 		--black: #333333;
+		--white: #ebecf0;
 	}
 	body {
 		font-family: Arial, Helvetica, sans-serif;
 		color: var(--black);
+		background-color: var(--white);
 	}
 
 	.elegant {
@@ -85,15 +86,27 @@ import grid from "../assets/grid.svg";
 	.intro {
 		display: grid;
 		grid-template-columns: 1fr auto;
-		grid-template-rows: max-content auto;
-		padding: 0rem 5rem;
+		grid-template-rows: 1fr 5fr;
+		padding: 2rem 5rem;
 	}
+
+	.profilePhoto {
+		grid-row: 1 / span 2;
+		grid-column: 1;
+		display: flex;
+		align-self: center;
+		justify-self: end;
+		padding-right: 2rem;
+	}
+
 	h1 {
 		text-transform: uppercase;
 		font-size: 5rem;
 		width: 40rem;
 		grid-column: 2;
 		grid-row: 2;
+		padding: 0rem;
+		margin: 0rem;
 	}
 
 	.intro__subtitle {
@@ -108,6 +121,9 @@ import grid from "../assets/grid.svg";
 
 	h2 {
 		font-weight: 400;
+		margin: 0rem;
+		display: flex;
+		align-items: end;
 	}
 
 	.nav {
