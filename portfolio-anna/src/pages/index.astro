@@ -27,29 +27,30 @@ import profile from "../assets/profilPhoto.png";
 		<nav class="nav">
 			<a class="nav__about" href="/about">About</a>
 			<div class="nav__about--rect">
-				<p>
-					Hi, I’m Anna. I love combining creativity and technology.
-					That’s how I found my passion for photography and film.
-					Through my studies in Digital Design and Development, I
-					developed skills in coding, design, and visual storytelling.
+				<p class="about__p">
+					Hi, I’m Anna. I love <b
+						>combining creativity and technology</b
+					>. That’s how I found my passion for photography and film.
+					Through my <b>studies in Digital Design and Development</b>,
+					I developed skills in coding, design, and visual
+					storytelling.
 				</p>
 			</div>
 			<a class="nav__projects" href="/projects">Projects</a>
 			<div class="nav__projects--rect">
-				<div>
-					<p>
+				<div class="projects">
+					<p class="projects__p">
 						My work is a mix of all these words, but I do love
 						finding new words to add.
 					</p>
-					<ul>
-						<li>Digital Design</li>
-						<li>Storytelling</li>
-						<li>Interactive Design</li>
-						<li>3D</li>
-						<li>Motion design</li>
-						<li>Photography</li>
-						<li><a href="/projects">See my work</a></li>
-					</ul>
+					<p class="projects_li--1">Digital Design</p>
+					<p class="projects_li--2">Storytelling</p>
+					<p class="projects_li--3">Interactive Design</p>
+					<p class="projects_li--4">3D</p>
+					<p class="projects_li--5">Motion design</p>
+					<p class="projects_li--6">Photography</p>
+					<p class="projects_li--7">filming</p>
+					<a class="pageButton" href="/projects">See my work</a>
 				</div>
 			</div>
 			<a class="nav__contact" href="/contact">Contact</a>
@@ -78,9 +79,17 @@ import profile from "../assets/profilPhoto.png";
 		font-weight: 400;
 	}
 
-	.highlight {
+	.highlight, .pageButton {
 		background-color: var(--accent);
 		border-radius: 25px;
+	}
+
+	.pageButton {
+		padding: 1rem;
+		border: .1rem solid var(--black);
+		text-decoration: none;
+		color: var(--black);
+		font-weight: 600;
 	}
 
 	.intro {
@@ -158,6 +167,10 @@ import profile from "../assets/profilPhoto.png";
 		grid-row: 2;
 	}
 
+	.about__p {
+		color: var(--black);
+	}
+
 	.nav__projects {
 		background-color: var(--lightblue);
 		grid-column: 2;
@@ -174,29 +187,85 @@ import profile from "../assets/profilPhoto.png";
 		height: 10rem;
 
 		transition: height 0.3s ease;
-		color: white;
+		color: black;
 		font-size: 1.5rem;
 	}
 
-	.nav__projects--rect img.grid {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		z-index: 1;
+	.projects {
+		display: grid;
+		grid-template-columns: 3fr 1fr 2fr 2fr 3fr;
+		grid-row: 2fr 2fr 2fr;
 	}
 
-	.nav__projects--rect div {
-		position: relative;
-		z-index: 2;
-		padding: 2rem;
-		width: 50%;
-		opacity: 0;
-		transition: opacity 0.3s ease;
+	.projects__p {
+		background-color: var(--blue);
+		padding: 1.5rem;
+		border-radius: 25px;
+		border: 0.1rem solid var(--black);
+		grid-column: 1;
+		grid-row: 1;
 		display: flex;
-		flex-direction: row;
+		justify-content: end;
+		width: 15rem;
+	}
+
+	.projects_li--1 {
+		grid-column: 1;
+		grid-row: 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.projects_li--2 {
+		grid-column: 1 / span 2;
+		grid-row: 3;
+		display: flex;
+		justify-content: end;
+	}
+
+	.projects_li--3 {
+		grid-column: 3;
+		grid-row: 2;
+		display: flex;
+		justify-content: end;
+	}
+
+	.projects_li--4 {
+		grid-column: 3 / span 2;
+		grid-row: 3;
+		display: flex;
+		justify-content: end;
+		align-items: end;
+	}
+
+	.projects_li--5 {
+		grid-column: 4;
+		grid-row: 1;
+		display: flex;
+		justify-content: end;
+	}
+
+	.projects_li--6 {
+		grid-column: 4;
+		grid-row: 2;
+		display: flex;
+		justify-content: center;
+		align-items: end;
+	}
+
+	.projects_li--7 {
+		grid-column: 5;
+		grid-row: 2;
+		display: flex;
+
+	}
+
+	.projects a {
+		grid-column: 5;
+		grid-row: 3;
+		display: flex;
+		align-items: center;
 	}
 
 	.nav__contact {
