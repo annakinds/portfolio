@@ -5,16 +5,291 @@ import Navigation from "../components/Nav.astro";
 
 <Layout>
     <div>
-        <Navigation></Navigation>
-        <h1>About</h1>
+        <Navigation />
+        <body class="body">
+            <ul class="personality">
+                <li>respect</li>
+                <li>vriendelijk</li>
+                <li>openhartig</li>
+                <li>behulpzaam</li>
+                <li>gepassioneerd</li>
+                <li>kalm</li>
+                <li>doelgericht</li>
+                <li>ordelijk</li>
+                <li>nieuwsgierig</li>
+            </ul>
+            <div class="experience">
+                <h2 class="experience__title">Ervaring</h2>
+                <div class="education">
+                    <h3>Onderwijs</h3>
+                    <ul class="education__years">
+                        <li></li>
+                        <li>2023</li>
+                        <li>2021</li>
+                        <li>2019</li>
+                        <li>2017</li>
+                    </ul>
+                    <ul class="education__schools">
+                        <li>
+                            <p class="study">Devine (bachelor)</p>
+                            <p class="school">Howest Kortrijk</p>
+                        </li>
+                        <li>
+                            <p class="study">Boekhouden-informatica</p>
+                            <p class="school">Guldensporencollege Kaai</p>
+                        </li>
+                        <li>
+                            <p class="study">Economie A</p>
+                            <p class="school">Don Bosco Kortrijk</p>
+                        </li>
+                        <li>
+                            <p class="study">STEM</p>
+                            <p class="school">Don Bosco Kortrijk</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="jobsAndProjects">
+                    <div>
+                        <h3>Studentenjobs</h3>
+                        <ul>
+                            <li>
+                                <p>LPM for kids (fotografe)</p>
+                                <p class="year">2023-2025</p>
+                            </li>
+                            <li>
+                                <p>Trouwfotografe</p>
+                                <p class="year">2025</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Eigen projecten</h3>
+                        <ul>
+                            <li>
+                                <p>Fotografie (portraits)</p>
+                                <p class="year">2019-heden</p>
+                            </li>
+                            <li>
+                                <p>Kortfilms</p>
+                                <p class="year">2023 & 2025</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="skills">
+                <h2 class="skills__title">Skills</h2>
+                <div class="graphic">
+                    <p class="subtitle">Graphic Design</p>
+                    <ul class="list">
+                        <li class="item">Figma</li>
+                        <li class="item">Photoshop</li>
+                        <li class="item">Illustrator</li>
+                        <li class="item">Storytelling</li>
+                        <li class="item">Branding</li>
+                    </ul>
+                </div>
+                <div class="motion">
+                    <p class="subtitle">Motion Design</p>
+                    <ul class="list">
+                        <li class="item">After Effects</li>
+                        <li class="item">Blender</li>
+                    </ul>
+                </div>
+                <div class="photography">
+                    <p class="subtitle">Photography</p>
+                    <ul class="list">
+                        <li class="item">Lightroom</li>
+                        <li class="item">Photoshop</li>
+                    </ul>
+                </div>
+                <div class="coding">
+                    <p class="subtitle">Coding</p>
+                    <ul class="list">
+                        <li class="item">Html</li>
+                        <li class="item">Css</li>
+                        <li class="item">Javascript</li>
+                        <li class="item">Astro</li>
+                        <li class="item">React</li>
+                        <li class="item">Php</li>
+                    </ul>
+                </div>
+            </div>
+        </body>
     </div>
-</Layout>
 
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    h1 {
-        text-transform: uppercase;
-    }
-</style>
+    <style>
+        :root {
+            --lightlightblue: #dae0ee;
+            --lightblue: #b8c3dc;
+            --blue: #8897ba;
+            --accent: #daea81;
+            --black: #333333;
+            --white: #ebecf0;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--black);
+            background-color: var(--lightlightblue);
+            margin: 0;
+            padding: 0;
+        }
+        .personality {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .experience {
+            display: grid;
+            grid-template-columns: max-content auto;
+            grid-template-rows: auto auto;
+            background-color: var(--lightlightblue);
+        }
+
+        h2 {
+            font-size: 8rem;
+            text-transform: uppercase;
+            color: var(--lightblue);
+            margin: 0;
+            padding: 2rem;
+            height: fit-content;
+            width: fit-content;
+        }
+
+        .experience__title {
+            writing-mode: sideways-lr;
+            margin-left: -5rem;
+            grid-row: 1 / span 2;
+            grid-column: 1;
+            display: flex;
+            justify-self: start;
+        }
+
+        h3 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            border: var(--black) 0.1rem solid;
+            border-radius: 25px;
+            width: fit-content;
+            padding: 0.5rem 1.5rem;
+            color: var(--blue);
+        }
+
+        .education__years {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 15rem;
+            color: var(--blue);
+            border-bottom: var(--black) 0.1rem solid;
+            padding: 1.5rem;
+            margin-right: 5rem;
+        }
+
+        .education__schools {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 4rem;
+            line-height: 0.5rem;
+        }
+
+        .education__schools :nth-child(3) {
+            margin-left: 1rem;
+        }
+
+        .education__schools :nth-child(4) {
+            margin-left: 5rem;
+        }
+
+        .study {
+            font-size: 1.5rem;
+        }
+
+        .school {
+            font-size: 1rem;
+        }
+
+        .jobsAndProjects {
+            display: flex;
+            flex-direction: row;
+            gap: 20rem;
+            font-size: 1.5rem;
+        }
+
+        .year {
+            font-size: 1rem;
+            margin-top: -0.5rem;
+            color: var(--blue);
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: max-content max-content;
+            padding-left: 8rem;
+            column-gap: 15rem;
+            background-color: var(--lightlightblue);
+        }
+
+        .skills__title {
+            writing-mode: sideways-rl;
+            margin-left: -7rem;
+            grid-row: 1 / span 2;
+            grid-column: 3;
+            display: flex;
+            justify-self: end;
+        }
+
+        .graphic {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .motion {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .photography {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .coding {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .list {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 25rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border: var(--black) 0.1rem solid;
+            background-color: var(--lightblue);
+            border-radius: 25px;
+            width: fit-content;
+            padding: 1rem 1.5rem;
+        }
+
+        .item {
+            font-size: 1.2rem;
+            border: var(--black) 0.1rem solid;
+            border-radius: 25px;
+            padding: 1rem 1.5rem;
+            width: fit-content;
+            list-style: none;
+        }
+    </style>
+</Layout>

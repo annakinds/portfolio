@@ -1,4 +1,4 @@
-<div>
+<div class="nav">
     <nav>
         <ul class="nav-list">
             <li>
@@ -24,6 +24,12 @@
         --blue: #8897ba;
         --accent: #daea81;
         --black: #333333;
+        --white: #ebecf0;
+    }
+
+    .nav {
+        height: fit-content;
+        background-color: var(--white);
     }
 
     .nav-list {
@@ -39,12 +45,12 @@
         text-decoration: none;
         color: var(--black);
         text-transform: uppercase;
-        padding: .5rem 2rem;
+        padding: 0.5rem 2rem;
         border-radius: 25px 25px 0px 0px;
     }
 
     a:hover {
-        padding: 1.5rem 2rem .5rem 2rem;
+        padding: 1.5rem 2rem 0.5rem 2rem;
         font-weight: 600;
         text-align: center;
     }
@@ -52,7 +58,6 @@
     .home {
         background-color: var(--black);
         color: #dae0ee;
-
     }
 
     .about {
