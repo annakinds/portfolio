@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import profile from "../assets/profilPhoto.png";
+import arrow from "../assets/arrow.svg";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -26,7 +27,7 @@ import profile from "../assets/profilPhoto.png";
 		</div>
 		<nav class="nav">
 			<a class="nav__about" href="/about">About</a>
-			<div class="nav__about--rect">
+			<div class="about">
 				<p class="about__p">
 					Hi, I’m Anna. I love <b
 						>combining creativity and technology</b
@@ -37,24 +38,32 @@ import profile from "../assets/profilPhoto.png";
 				</p>
 			</div>
 			<a class="nav__projects" href="/projects">Projects</a>
-			<div class="nav__projects--rect">
-				<div class="projects">
-					<p class="projects__p">
-						My work is a mix of all these words, but I do love
-						finding new words to add.
-					</p>
-					<p class="projects_li--1">Digital Design</p>
-					<p class="projects_li--2">Storytelling</p>
-					<p class="projects_li--3">Interactive Design</p>
-					<p class="projects_li--4">3D</p>
-					<p class="projects_li--5">Motion design</p>
-					<p class="projects_li--6">Photography</p>
-					<p class="projects_li--7">filming</p>
-					<a class="pageButton" href="/projects">See my work</a>
-				</div>
+			<div class="projects">
+				<p class="projects__p">
+					My work is a mix of all these words, but I do love finding
+					new words to add.
+				</p>
+				<p class="projects_li--1">Filming</p>
+				<p class="projects_li--2">Interactive Design</p>
+				<p class="projects_li--3">Storytelling</p>
+				<p class="projects_li--4">Photography</p>
+				<p class="projects_li--5">3D</p>
+				<p class="projects_li--6">Digital Design</p>
+				<p class="projects_li--7">Motion Design</p>
+				<a class="pageButton" href="/projects">See my work</a>
 			</div>
 			<a class="nav__contact" href="/contact">Contact</a>
-			<div class="nav__contact--rect"></div>
+			<div class="contact">
+				<h3 class="contact__title">Get in touch</h3>
+				<Image src={arrow} alt="" class="contact__arrow" />
+				<div class="contact__geg">
+					<p class="mail">anna.kinds@outlook.com</p>
+					<p class="phone">+32 470 51 02 42</p>
+				</div>
+				<a class="pageButton contact__button" href="/contact"
+					>or See other ways to contact me →</a
+				>
+			</div>
 		</nav>
 	</div>
 </Layout>
@@ -72,6 +81,8 @@ import profile from "../assets/profilPhoto.png";
 		font-family: Arial, Helvetica, sans-serif;
 		color: var(--black);
 		background-color: var(--white);
+		margin: 0;
+		padding: 0;
 	}
 
 	.elegant {
@@ -79,17 +90,20 @@ import profile from "../assets/profilPhoto.png";
 		font-weight: 400;
 	}
 
-	.highlight, .pageButton {
+	.highlight,
+	.pageButton {
 		background-color: var(--accent);
 		border-radius: 25px;
 	}
 
 	.pageButton {
 		padding: 1rem;
-		border: .1rem solid var(--black);
+		border: 0.1rem solid var(--black);
 		text-decoration: none;
 		color: var(--black);
 		font-weight: 600;
+		text-transform: uppercase;
+		width: 5rem;
 	}
 
 	.intro {
@@ -97,7 +111,6 @@ import profile from "../assets/profilPhoto.png";
 		grid-template-columns: auto auto;
 		grid-template-rows: 1fr 5fr;
 		padding: 2rem 5rem;
-
 	}
 
 	.profilePhoto {
@@ -157,13 +170,65 @@ import profile from "../assets/profilPhoto.png";
 		display: flex;
 		align-self: end;
 	}
+
+	.about,
+	.projects,
+	.contact {
+		transition: height 0.3s ease;
+		overflow: hidden;
+		height: 10rem;
+		width: 100%;
+		font-size: 1.5rem;
+	}
+
+	/* ABOUT */
+	.nav__about:hover + .about,
+	.about:hover {
+		height: 25rem;
+	}
+
+	.nav__about:hover + .about > *,
+	.about:hover > * {
+		opacity: 1;
+	}
+
+	/* PROJECTS */
+	.nav__projects:hover + .projects,
+	.projects:hover {
+		height: 30rem;
+	}
+
+	.nav__projects:hover + .projects > *,
+	.projects:hover > * {
+		opacity: 1;
+	}
+
+	/* CONTACT */
+	.nav__contact:hover + .contact,
+	.contact:hover {
+		height: 30rem;
+	}
+
+	.nav__contact:hover + .contact > *,
+	.contact:hover > * {
+		opacity: 1;
+	}
+
+	/* tekst in de rect standaard onzichtbaar */
+	.about > *,
+	.projects > *,
+	.contact > * {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
 	.nav__about {
 		background-color: var(--lightlightblue);
 		grid-column: 3;
 		grid-row: 1;
 	}
 
-	.nav__about--rect {
+	.about {
 		background-color: var(--lightlightblue);
 		grid-column: 1 / span 3;
 		grid-row: 2;
@@ -179,95 +244,118 @@ import profile from "../assets/profilPhoto.png";
 		grid-row: 2;
 	}
 
-	.nav__projects--rect {
+	.projects {
 		background-color: var(--lightblue);
 		grid-column: 1 / span 3;
 		grid-row: 3;
 
 		position: relative;
 		overflow: hidden;
-		height: 10rem;
 
 		transition: height 0.3s ease;
-		color: black;
+		color: var(--black);
 		font-size: 1.5rem;
+
+		display: grid;
+		grid-template-columns: 4fr 2fr 3fr 3fr 4fr;
+		grid-template-rows: 1fr 2fr 3fr;
+		margin: 0;
 	}
 
-	.projects {
-		display: grid;
-		grid-template-columns: 3fr 1fr 2fr 2fr 3fr;
-		grid-row: 2fr 2fr 2fr;
+	.projects > * {
+		padding: 0.7rem 1rem;
+		border-radius: 25px;
+		width: fit-content;
+		height: fit-content;
 	}
 
 	.projects__p {
 		background-color: var(--blue);
-		padding: 1.5rem;
-		border-radius: 25px;
+		margin-left: 5rem;
 		border: 0.1rem solid var(--black);
 		grid-column: 1;
 		grid-row: 1;
 		display: flex;
 		justify-content: end;
-		width: 15rem;
+		min-width: 23rem;
+		padding: 1rem 1.5rem;
 	}
 
 	.projects_li--1 {
 		grid-column: 1;
 		grid-row: 2;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		justify-self: center;
+		align-self: center;
 	}
 
 	.projects_li--2 {
 		grid-column: 1 / span 2;
 		grid-row: 3;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: end;
+		justify-self: end;
 	}
 
 	.projects_li--3 {
 		grid-column: 3;
 		grid-row: 2;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: end;
+		justify-self: end;
+		align-self: end;
 	}
 
 	.projects_li--4 {
 		grid-column: 3 / span 2;
 		grid-row: 3;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: end;
-		align-items: end;
+		justify-self: center;
+		align-self: center;
 	}
 
 	.projects_li--5 {
 		grid-column: 4;
-		grid-row: 1;
+		grid-row: 2;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: end;
+		justify-self: center;
+		align-self: end;
 	}
 
 	.projects_li--6 {
 		grid-column: 4;
-		grid-row: 2;
+		grid-row: 1;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-		justify-content: center;
-		align-items: end;
+		justify-self: end;
+		align-self: center;
 	}
 
 	.projects_li--7 {
 		grid-column: 5;
 		grid-row: 2;
+		background-color: var(--lightlightblue);
+		text-transform: uppercase;
 		display: flex;
-
+		justify-self: center;
+		align-self: end;
 	}
 
-	.projects a {
+	.projects > a {
 		grid-column: 5;
 		grid-row: 3;
 		display: flex;
-		align-items: center;
+		justify-self: center;
+		align-self: center;
 	}
 
 	.nav__contact {
@@ -276,71 +364,85 @@ import profile from "../assets/profilPhoto.png";
 		grid-row: 3;
 		z-index: 3;
 	}
-	.nav__contact--rect {
+
+	.contact {
 		background-color: var(--blue);
 		grid-column: 1 / span 3;
 		grid-row: 4;
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: max-content auto auto;
+		text-align: center;
 	}
 
-	.nav__about--rect,
-	.nav__projects--rect,
-	.nav__contact--rect {
-		transition: height 0.3s ease;
-		overflow: hidden;
+	.contact__title {
+		grid-column: 1 / span 2;
+		grid-row: 1;
+		text-transform: uppercase;
+		font-size: 4rem;
+		background-color: var(--lightblue);
+		border-radius: 25px;
+		width: fit-content;
+		padding: 1rem;
 		display: flex;
-		align-items: center;
-		justify-content: start;
-		color: white;
-		height: 10rem;
-		width: 100%;
-		font-size: 1.5rem;
+		justify-self: center;
+		align-self: end;
+		margin-bottom: 0;
 	}
 
-	.nav__about--rect p,
-	.nav__projects--rect div,
-	.nav__contact--rect p {
-		padding: 2rem;
-		width: 50%;
+	.contact__arrow {
+		grid-column: 1;
+		grid-row: 2;
+		width: 8rem;
+		height: auto;
+		margin-top: 1rem;
+		display: flex;
+		justify-self: end;
+		align-self: start;
 	}
 
-	/* ABOUT */
-	.nav__about:hover + .nav__about--rect,
-	.nav__about--rect:hover {
-		height: 25rem;
+	.contact__geg {
+		grid-column: 2;
+		grid-row: 2;
+		display: flex;
+		flex-direction: column;
+		text-align: right;
+		width: fit-content;
 	}
 
-	.nav__about:hover + .nav__about--rect p,
-	.nav__about--rect:hover p {
-		opacity: 1;
+	.mail:before {
+		content: "";
+		width: 1.5rem;
+		height: 1.5rem;
+		display: inline-block;
+		background-image: url("../assets/mail.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin-right: 0.5rem;
+		margin-bottom: -0.5rem;
 	}
 
-	/* PROJECTS */
-	.nav__projects:hover + .nav__projects--rect,
-	.nav__projects--rect:hover {
-		height: 25rem;
+	.phone:before {
+		content: "";
+		width: 1.5rem;
+		height: 1.5rem;
+		display: inline-block;
+		background-image: url("../assets/mobile.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin-right: 0.5rem;
+		margin-bottom: -0.5rem;
 	}
 
-	.nav__projects:hover + .nav__projects--rect div,
-	.nav__projects--rect:hover div {
-		opacity: 1;
+	.phone {
+		margin-top: 0rem;
 	}
 
-	/* CONTACT */
-	.nav__contact:hover + .nav__contact--rect,
-	.nav__contact--rect:hover {
-		height: 25rem;
-	}
-
-	.nav__contact:hover + .nav__contact--rect p,
-	.nav__contact--rect:hover p {
-		opacity: 1;
-	}
-
-	/* tekst in de rect standaard onzichtbaar */
-	.nav__about--rect p,
-	.nav__projects--rect div,
-	.nav__contact--rect p {
-		opacity: 0;
-		transition: opacity 0.3s ease;
+	.contact__button {
+		grid-column: 2;
+		grid-row: 3;
+		width: 18rem;
+		height: fit-content;
+		margin-top: -4rem;
 	}
 </style>
