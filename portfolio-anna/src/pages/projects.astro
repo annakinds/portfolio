@@ -1,21 +1,155 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Nav.astro";
+import { Image } from "astro:assets";
+import smeg from "../assets/projects/smeg.png";
+import digitalexhibition from "../assets/projects/digital-exhibition.png";
 ---
 
 <Layout>
     <div>
-        <Navigation></Navigation>
-        <h1>Projects</h1>
+        <Navigation />
+        <div class="body">
+            <section>
+                <h2>Brand Sparkling New</h2>
+                <Image src={smeg} alt="" class="image" />
+                <ul>
+                    <li>Motion Design</li>
+                    <li>Blender</li>
+                    <li>3D</li>
+                </ul>
+                <p>
+                    Dit was een opdracht in mijn laatste jaar van de opleiding
+                    ‘Digital Design and Development’. In dit jaar leerde ik met
+                    Blender werken en kregen we de opdracht om een nieuwe
+                    heroimage te maken voor een merk naar keuze. <br /><br />Ik
+                    koos voor het merk ‘Smeg’. Ik maakte een kleine keuken na in
+                    Blender en voegde een paar Smeg-toestellen toe in het
+                    interieur. Daarna voegde ik ook nog wat animatie toe om het
+                    wat interessanter te maken.
+                </p>
+            </section>
+            <section>
+                <h2>Digital Exhibition</h2>
+                <Image src={digitalexhibition} alt="" class="image" />
+                <ul>
+                    <li>Web GL</li>
+                    <li>Blender</li>
+                    <li>3D</li>
+                </ul>
+                <p>
+                    In deze opdracht leerden we werken met Web GL. Ik heb
+                    gekozen om een digitale tentoonstelling te maken van mijn
+                    fotografie. Ik begon met een 3D-ruimte te maken in Blender,
+                    waar ik mijn foto's tentoonstelde in kaders. Vervolgens heb
+                    ik deze ruimte omgezet naar Web GL en foto's in de kaders
+                    geplaatst. Op de foto's plaatste ik ook nog een filter, die
+                    kan je zien wanneer je op de foto klikt. <br /><br
+                    />Daarnaast heb ik ook 3 kubussen in mijn ruimte geplaatst
+                    die je zelf kan draaien en plaatsen hoe je ze wilt. Dit
+                    maakt mijn digitale tentoonstelling interactief en leuk om
+                    te verkennen.
+                </p>
+            </section>
+            <section>
+                <h2>Brand Sparkling New</h2>
+                <Image src={digitalexhibition} alt="" class="image" />
+                <ul>
+                    <li>Web GL</li>
+                    <li>Blender</li>
+                    <li>3D</li>
+                </ul>
+                <p>
+                    In deze opdracht leerden we werken met Web GL. Ik heb
+                    gekozen om een digitale tentoonstelling te maken van mijn
+                    fotografie. Ik begon met een 3D-ruimte te maken in Blender,
+                    waar ik mijn foto's tentoonstelde in kaders. Vervolgens heb
+                    ik deze ruimte omgezet naar Web GL en foto's in de kaders
+                    geplaatst. Op de foto's plaatste ik ook nog een filter, die
+                    kan je zien wanneer je op de foto klikt. <br /><br
+                    />Daarnaast heb ik ook 3 kubussen in mijn ruimte geplaatst
+                    die je zelf kan draaien en plaatsen hoe je ze wilt. Dit
+                    maakt mijn digitale tentoonstelling interactief en leuk om
+                    te verkennen.
+                </p>
+            </section>
+        </div>
     </div>
 </Layout>
 
 <style>
+    :root {
+        --lightlightblue: #dae0ee;
+        --lightblue: #b8c3dc;
+        --blue: #8897ba;
+        --accent: #daea81;
+        --black: #333333;
+        --white: #ebecf0;
+    }
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
+
+    .body {
+        background-color: var(--lightblue);
+        padding: 2rem;
+    }
+
     h1 {
         font-family: baskerville, serif;
         text-transform: uppercase;
+    }
+    section {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: 1fr 3fr;
+    }
+    h2 {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 0rem 2rem;
+        display: flex;
+        align-items: center;
+    }
+    .image {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: fit-content;
+        height: auto;
+        border-radius: 25px;
+        margin: 0rem 2rem;
+        display: flex;
+        justify-self: center;
+        align-self: center;
+    }
+    ul {
+        grid-column: 3;
+        grid-row: 1;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: end;
+        align-items: center;
+    }
+
+    li {
+        text-transform: uppercase;
+        font-weight: 400;
+        background-color: var(--lightlightblue);
+        border-radius: 25px;
+        padding: 0.5rem 1.5rem;
+        width: fit-content;
+        height: fit-content;
+    }
+    p {
+        grid-column: 2 / span 2;
+        grid-row: 2;
+        line-height: 1.5rem;
+        padding: 0rem 2rem;
+        max-width: 40rem;
     }
 </style>
