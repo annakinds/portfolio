@@ -1,21 +1,256 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Nav.astro";
+import { Image } from "astro:assets";
+import arrow from "../assets/arrow.svg";
 ---
 
 <Layout>
     <div>
-        <Navigation></Navigation>
-        <h1>Contact</h1>
+        <Navigation />
+        <div class="body">
+            <section class="links">
+                <ul class="social-media">
+                    <li class="subtitle">Social Media</li>
+                    <li>
+                        <a
+                            class="item"
+                            href="https://www.instagram.com/photography_by_annaa/"
+                            >@photography_by_annaa</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="item"
+                            href="https://www.instagram.com/houseofgrassfilms/"
+                            >@houseofgrassfilms</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="item"
+                            href="https://www.youtube.com/@HouseofGrassFilms"
+                            >@HouseofGrassFilms</a
+                        >
+                    </li>
+                </ul>
+                <ul class="professional">
+                    <li class="subtitle">Professional</li>
+                    <li>
+                        <a
+                            class="item"
+                            href="https://www.linkedin.com/in/anna-kinds-474402396/"
+                            >linkedin.com/nl/anna-kinds</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="item"
+                            href="https://www.behance.net/annakinds23"
+                            >behance.net/annakinds23</a
+                        >
+                    </li>
+                    <li>
+                        <a class="item" href="https://github.com/annakinds"
+                            >github.com/annakinds</a
+                        >
+                    </li>
+                </ul>
+            </section>
+            <section class="get-in-touch">
+                <h3 class="get-in-touch__title">Get in touch</h3>
+                <Image src={arrow} alt="" class="get-in-touch__arrow" />
+                <div class="get-in-touch__geg">
+                    <p class="mail">anna.kinds@outlook.com</p>
+                    <p class="phone">+32 470 51 02 42</p>
+                </div>
+            </section>
+        </div>
     </div>
 </Layout>
 
 <style>
+    :root {
+        --lightlightblue: #dae0ee;
+        --lightblue: #b8c3dc;
+        --blue: #8897ba;
+        --accent: #daea81;
+        --black: #333333;
+        --white: #ebecf0;
+    }
     body {
         font-family: Arial, Helvetica, sans-serif;
+        color: var(--black);
+        background-color: var(--blue);
+        margin: 0;
+        padding: 0;
     }
-    h1 {
-        font-family: baskerville, serif;
+
+    .body {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .social-media,
+    .professional {
+        list-style: none;
+        line-height: 3rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
         text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .item {
+        color: var(--white);
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
+
+    .links {
+        background-image: url("../assets/phone.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .social-media :nth-child(2)::before,
+    .social-media :nth-child(3)::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.3rem;
+        display: inline-block;
+        background-image: url("../assets/insta.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.3rem;
+    }
+
+    .social-media :nth-child(4)::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.3rem;
+        display: inline-block;
+        background-image: url("../assets/youtube.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.4rem;
+    }
+
+    .professional :nth-child(2)::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.3rem;
+        display: inline-block;
+        background-image: url("../assets/linkedin.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.2rem;
+    }
+
+    .professional :nth-child(3)::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.3rem;
+        display: inline-block;
+        background-image: url("../assets/behance.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.3rem;
+    }
+
+    .professional :nth-child(4)::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.3rem;
+        display: inline-block;
+        background-image: url("../assets/github.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.3rem;
+    }
+
+    .get-in-touch {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: max-content auto auto;
+    }
+
+    .get-in-touch__title {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        text-transform: uppercase;
+        font-size: 4rem;
+        background-color: var(--accent);
+        border-radius: 25px;
+        width: fit-content;
+        padding: 1rem;
+        display: flex;
+        justify-self: center;
+        align-self: end;
+        margin-bottom: 0;
+    }
+
+    .get-in-touch__arrow {
+        grid-column: 1;
+        grid-row: 2;
+        width: 8rem;
+        height: auto;
+        margin-top: 1rem;
+        display: flex;
+        justify-self: end;
+        align-self: start;
+    }
+
+    .get-in-touch__geg {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        width: fit-content;
+    }
+
+    .mail:before {
+        content: "";
+        width: 1.5rem;
+        height: 1.5rem;
+        display: inline-block;
+        background-image: url("../assets/mail.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.5rem;
+    }
+
+    .phone:before {
+        content: "";
+        width: 1.5rem;
+        height: 1.5rem;
+        display: inline-block;
+        background-image: url("../assets/mobile.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        margin-bottom: -0.5rem;
+    }
+
+    .phone {
+        margin-top: 0rem;
     }
 </style>
